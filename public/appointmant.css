@@ -1,0 +1,154 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Logo */
+.navbar-logo h1 {
+    color: #007bff; /* Blue color for the logo */
+    font-size: 28px; /* Optional: adjust font size if needed */
+    margin: 0; /* Removes any default margin */
+}
+/* Navbar Logo */
+.navbar-logo h1 {
+    color: #0dcaf0; /* Blue color for the logo */
+    font-size: 28px;
+    margin: 0;
+    display: flex;
+    align-items: center; /* Align the icon and text vertically */
+}
+
+/* Container styling */
+.form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color:#dff5f5;;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(109, 108, 108, 0.1);
+}
+/* Navbar styling */
+.navbar {
+    background-color:#0dcaf0;
+    padding: 15px 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+ 
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-menu li {
+    margin-left: 20px;
+}
+
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Hover effect for nav links */
+.navbar-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Form header */
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Form labels */
+form label {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+    font-family: Arial, sans-serif;
+    color: #555;
+}
+
+/* Form input fields */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form select,
+form input[type="date"],
+form input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Dropdown styling */
+form select {
+    appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Button styling */
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(0, 174, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Hover effect for button */
+form button:hover {
+    background-color:rgb(59, 185, 243);
+}
+
+/* Message styling */
+.message {
+    margin-top: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color:rgb(0, 174, 255);
+    font-weight: bold;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form select,
+    form input[type="date"],
+    form input[type="time"] {
+        padding: 8px;
+    }
+}
