@@ -16,8 +16,11 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
-# Step 3: Install Composer globally
+    # Step 3: Install Composer globally
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+#  Add this line
+ENV COMPOSER_MEMORY_LIMIT=-1
 
 # Step 4: Set working directory
 WORKDIR /var/www
@@ -27,6 +30,18 @@ COPY . .
 
 # Step 6: Install Composer dependencies (without interaction)
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# # Step 3: Install Composer globally
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# # Step 4: Set working directory
+# WORKDIR /var/www
+
+# # Step 5: Copy project files
+# COPY . .
+
+# # Step 6: Install Composer dependencies (without interaction)
+# RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Step 7: Expose port
 EXPOSE 10000
