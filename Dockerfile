@@ -34,5 +34,4 @@ EXPOSE 10000
 # Step 8: Start Laravel dev server
 CMD ["sh", "-c", "php artisan config:clear && php artisan key:generate && php artisan serve --host=0.0.0.0 --port=10000"]
 
-ARG RUN_MIGRATION=false
-RUN if [ "$RUN_MIGRATION" = "true" ]; then php artisan migrate --force; fi
+
