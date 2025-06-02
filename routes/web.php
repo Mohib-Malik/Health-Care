@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserPanelController;
 use App\Http\Controllers\DoctorPanelController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 use App\Models\doctors;
 use App\Models\patients;
 use App\Models\Appointment;
@@ -27,8 +28,14 @@ use App\Models\Profile;
 //             return view('dashboard');
 //         })->name('dashboard');
 //     });
-
-
+// Route::get('/migrate-run', function () {
+//     Artisan::call('migrate', ['--force' => true]);
+//     return '✅ Migration complete!';
+// });
+Route::get('/run-migrations', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return 'Migrations ran successfully!';
+});
 //////////////////////////////////// Admin Panel Routes Start ///////////////////////////////////////////
 
 Route::middleware(['auth','admin'])->group(function () {
