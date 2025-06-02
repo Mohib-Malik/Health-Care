@@ -96,3 +96,34 @@ CMD php artisan config:clear \
     && php artisan session:table \
     && php artisan migrate --force \
     && php artisan serve --host=0.0.0.0 --port=10000
+FROM php:8.2-cli
+
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    git \
+    curl \
+    libzip-dev \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql mbstring exif pcntl bcmath gd zip \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+ENV COMPOSER_MEMORY_LIMIT=-1
+
+WORKDIR /var/www
+
+COPY . .
+
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+EXPOSE 10000
+
+CMD php artisan config:clear \
+    && php artisan key:generate \
+    && php artisan migrate --force \
+    && php artisan serve --host=0.0.0.0 --port=10000
