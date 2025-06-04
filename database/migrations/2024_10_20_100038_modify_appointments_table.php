@@ -6,29 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-       // Migration file for appointments
-Schema::table('appointments', function (Blueprint $table) {
-    // Add the patient_id column if it doesn't exist
-    if (!Schema::hasColumn('appointments', 'patient_id')) {
-        $table->unsignedBigInteger('patient_id'); // Add patient_id
+        // Only run this if the table exists
+        if (Schema::hasTable('appointments')) {
+            Schema::table('appointments', function (Blueprint $table) {
+                if (!Schema::hasColumn('appointments', 'patient_id')) {
+                    $table->unsignedBigInteger('patient_id')->nullable(); // Use nullable to avoid issues
+                    $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+                }
+            });
+        }
     }
-
-    // Ensure foreign key is set up with cascade on delete
-    $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
-});
-
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+        public function down(): void
     {
-        Schema::dropIfExists('appointments');
+        // Revert only the added column, not the entire table
+        if (Schema::hasTable('appointments') && Schema::hasColumn('appointments', 'patient_id')) {
+            Schema::table('appointments', function (Blueprint $table) {
+                $table->dropForeign(['patient_id']);
+                $table->dropColumn('patient_id');
+            });
+        }
     }
 };
