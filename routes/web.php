@@ -19,19 +19,11 @@ use App\Models\Department;
 use App\Models\DoctorSchedule;
 use App\Models\Profile;
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-//     ])->group(function () {
-//         Route::get('/dashboard', function () {
-//             return view('dashboard');
-//         })->name('dashboard');
-//     });
+
 
 Route::get('/run-migrations', function () {
     Artisan::call('migrate', ['--force' => true]);
-    return 'Migrations ran successfully!';
+    return 'Migrations ran successfully! back to home';
 });
 
 //////////////////////////////////// Admin Panel Routes Start ///////////////////////////////////////////
