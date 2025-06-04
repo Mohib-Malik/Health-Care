@@ -28,14 +28,12 @@ use App\Models\Profile;
 //             return view('dashboard');
 //         })->name('dashboard');
 //     });
-// Route::get('/migrate-run', function () {
-//     Artisan::call('migrate', ['--force' => true]);
-//     return '✅ Migration complete!';
-// });
+
 Route::get('/run-migrations', function () {
     Artisan::call('migrate', ['--force' => true]);
     return 'Migrations ran successfully!';
 });
+
 //////////////////////////////////// Admin Panel Routes Start ///////////////////////////////////////////
 
 Route::middleware(['auth','admin'])->group(function () {
