@@ -116,10 +116,10 @@ class UserPanelController extends Controller
         return view('userpanel.detail');
     }
 
-    public function findDoctor()
-    {
-        return view('userpanel.finddoctor');
-    }
+    // public function findDoctor()
+    // {
+    //     return view('userpanel.finddoctor');
+    // }
 
     public function invoice()
     {
